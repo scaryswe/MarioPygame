@@ -9,8 +9,11 @@ BLACK= (0,0,0)
 
 FPS = 60
 
+marioCharacterImage = pygame.image.load(os.path.join('assets', 'maryo.png'))
+
 def draw_window():
-    WIN.fill((WHITE))
+    WIN.fill(WHITE)
+    WIN.blit(marioCharacterImage,(300, 100))
     pygame.display.update()
 
 def main():
