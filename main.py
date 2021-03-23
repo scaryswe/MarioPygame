@@ -10,7 +10,7 @@ BLACK= (0,0,0)
 FPS = 60
 #Need to get this to load in, then resize, then move, then work on collision
 marioCharacterImage = pygame.image.load(os.path.join('assets', 'maryo.png'))
-mario = pygame.transform.scale(marioCharacterImage, (50, 50))
+mario = pygame.transform.scale(marioCharacterImage, (55, 45))
 
 def draw_window():
     WIN.fill(WHITE)
