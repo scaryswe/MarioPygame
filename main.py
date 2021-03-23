@@ -2,6 +2,7 @@ import pygame, sys
 
 WIDTH, HEIGHT = 900, 500
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("MarioMiniGame")
 
 def main():
     run = True
