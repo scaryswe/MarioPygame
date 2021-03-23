@@ -6,6 +6,8 @@ pygame.display.set_caption("MarioMiniGame")
 
 WHITE=(255,255,255)
 BLACK= (0,0,0)
+RED= (255,0,0)
+YELLOW= (255,255,0)
 BORDER = pygame.Rect(WIDTH//2 -5, 0, 10, HEIGHT)
 
 FPS = 60
@@ -22,11 +24,17 @@ mario = pygame.transform.scale(marioCharacterImage, (55, 45))
 bowserCharacterImage= pygame.image.load(os.path.join('assets', 'bowser.png'))
 bowser = pygame.transform.scale(bowserCharacterImage, (55, 45))
 
-def draw_window(mario, bowser):
+def draw_window(mario, bowser, bowser_fireballs, mario_fireballs):
     WIN.fill(BLACK)
     pygame.draw.rect(WIN, WHITE, BORDER)
     WIN.blit(marioCharacterImage,(mario.x, mario.y))
     WIN.blit(bowserCharacterImage, (bowser.x, bowser.y))
+
+    for fireball in bowser_fireballs:
+        pygame.draw.rect(WIN, RED, fireball)
+    for fireball in mario_fireballs:
+        pygame.draw.rect(WIN, YELLOW, fireball)
+
     pygame.display.update()
 #Next two functions are for movement and borders
 def mario_movement(keys_pressed, mario):
@@ -34,7 +42,7 @@ def mario_movement(keys_pressed, mario):
             mario.x-= VEL
         if keys_pressed[pygame.K_d] and mario.x + VEL + mario.width < BORDER.x: #right movement key
             mario.x+= VEL
-        if keys_pressed[pygame.K_w] and mario.y - VEL > : #Up movement key 
+        if keys_pressed[pygame.K_w] and mario.y - VEL > 0: #Up movement key 
             mario.y-= VEL
         if keys_pressed[pygame.K_s] and mario.y + VEL + mario.height < HEIGHT: #down movement key 
             mario.y-= VEL
@@ -44,7 +52,7 @@ def bowser_movement(keys_pressed, bowser):
             bowser.x-= VEL
         if keys_pressed[pygame.K_RIGHT] and bowser.x + VEL + bowser.width < WIDTH: #right movement key
             bowser.x+= VEL
-        if keys_pressed[pygame.K_UP] and bowser.y - VEL > : #Up movement key 
+        if keys_pressed[pygame.K_UP] and bowser.y - VEL > 0: #Up movement key 
             bowser.y-= VEL
         if keys_pressed[pygame.K_DOWN] and bowser.y + VEL + bowser.height < HEIGHT: #down movement key 
             bowser.y-= VEL
@@ -55,10 +63,14 @@ def handle_fireballs(mario_fireballs, bowser_fireballs, mario, bowser):
         if bowser.colliderect(fireball):
             pygame.event.post(pygame.event.Event(bowserHIT))
             mario_fireballs.remove(fireball)
+        elif fireball.x > WIDTH:
+            mario_fireballs.remove(fireball)
     for fireball in bowser_fireballs:
         fireball.x -= FIREBALL_VEL
         if mario.colliderect(fireball):
             pygame.event.post(pygame.event.Event(marioHIT))
+            bowser_fireballs.remove(fireball)
+        elif fireball.x < 0:
             bowser_fireballs.remove(fireball)
 
 
@@ -78,11 +90,11 @@ def main():
             if event.type == pygame.QUIT:
                 run == False
             if event.type == pygame.KEYDOWN:
-                if event.key = pygame.K_LCTRL and len(mario_fireballs) < NUM_FIREBALLS:
+                if event.key == pygame.K_LCTRL and len(mario_fireballs) < NUM_FIREBALLS:
                     fireball = pygame.Rect(mario.x + mario.width, mario.y + mario.height//2 - 2, 10, 5)
                     mario_fireballs.append(fireball)
 
-                if event.key = pygame.K_RCTRL and len(bowser_fireballs) < NUM_FIREBALLS:
+                if event.key == pygame.K_RCTRL and len(bowser_fireballs) < NUM_FIREBALLS:
                     fireball = pygame.Rect(bowser.x, bowser.y + bowser.height//2 - 2, 10, 5)
                     bowser_fireballs.append(fireball)
 
@@ -90,7 +102,7 @@ def main():
         mario_movement(keys_pressed, mario)
         bowser_movement(keys_pressed, bowser)
         handle_fireballs(mario_fireballs, bowser_fireballs, mario, bowser)
-        draw_window(mario, bowser)
+        draw_window(mario, bowser, mario_fireballs, bowser_fireballs)
 
     pygame.quit()
 
