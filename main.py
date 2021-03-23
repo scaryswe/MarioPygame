@@ -6,6 +6,7 @@ pygame.display.set_caption("MarioMiniGame")
 
 WHITE=(255,255,255)
 BLACK= (0,0,0)
+BORDER = pygame.Rect(WIDTH/2 -5, 0, 10, HEIGHT)
 
 FPS = 60
 VEL = 5
@@ -17,7 +18,8 @@ bowserCharacterImage= pygame.image.load(os.path.join('assets', 'bowser.png'))
 bowser = pygame.transform.scale(bowserCharacterImage, (55, 45))
 
 def draw_window(mario, bowser):
-    WIN.fill(WHITE)
+    WIN.fill(BLACK)
+    pygame.draw.rect(WIN, WHITE, BORDER)
     WIN.blit(marioCharacterImage,(mario.x, mario.y))
     WIN.blit(bowserCharacterImage, (bowser.x, bowser.y))
     pygame.display.update()
