@@ -79,11 +79,11 @@ def main():
                 run == False
             if event.type == pygame.KEYDOWN:
                 if event.key = pygame.K_LCTRL and len(mario_fireballs) < NUM_FIREBALLS:
-                    fireball = pygame.Rect(mario.x + mario.width, mario.y + mario.height/2 - 2, 10, 5)
+                    fireball = pygame.Rect(mario.x + mario.width, mario.y + mario.height//2 - 2, 10, 5)
                     mario_fireballs.append(fireball)
 
                 if event.key = pygame.K_RCTRL and len(bowser_fireballs) < NUM_FIREBALLS:
-                    fireball = pygame.Rect(bowser.x, bowser.y + bowser.height/2 - 2, 10, 5)
+                    fireball = pygame.Rect(bowser.x, bowser.y + bowser.height//2 - 2, 10, 5)
                     bowser_fireballs.append(fireball)
 
         keys_pressed = pygame.key.get_pressed()
