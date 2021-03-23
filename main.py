@@ -48,6 +48,12 @@ def bowser_movement(keys_pressed, bowser):
         if keys_pressed[pygame.K_DOWN] and bowser.y + VEL + bowser.height < HEIGHT: #down movement key 
             bowser.y-= VEL
 
+def handle_fireballs(mario_fireballs, bowser_fireballs, mario, bowser):
+    for fireball in mario_fireballs:
+        fireball.x += FIREBALL_VEL
+        if mario.colliderect(fireball):
+
+
 def main():
     #part of function to make them move
     mario = pygame.Rect(100,300)
