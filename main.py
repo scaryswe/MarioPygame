@@ -23,15 +23,15 @@ def draw_window(mario, bowser):
     WIN.blit(marioCharacterImage,(mario.x, mario.y))
     WIN.blit(bowserCharacterImage, (bowser.x, bowser.y))
     pygame.display.update()
-
+#Next two functions are for movement and borders
 def mario_movement(keys_pressed, mario):
         if keys_pressed[pygame.K_a] and mario.x - VEL > 0: #left movement key
             mario.x-= VEL
-        if keys_pressed[pygame.K_d] and mario.x + VEL < 0: #right movement key
+        if keys_pressed[pygame.K_d] and mario.x + VEL + mario.width < BORDER.x: #right movement key
             mario.x+= VEL
-        if keys_pressed[pygame.K_w]: #Up movement key 
+        if keys_pressed[pygame.K_w] and mario.y - VEL > : #Up movement key 
             mario.y-= VEL
-        if keys_pressed[pygame.K_s]: #down movement key 
+        if keys_pressed[pygame.K_s] and mario.y + VEL + mario.height < HEIGHT: #down movement key 
             mario.y-= VEL
 
 def bowser_movement(keys_pressed, bowser):
