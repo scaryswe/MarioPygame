@@ -19,7 +19,18 @@ bowser = pygame.transform.scale(bowserCharacterImage, (55, 45))
 def draw_window():
     WIN.fill(WHITE)
     WIN.blit(marioCharacterImage,(mario.x, mario.y))
+    WIN.blit(bowserCharacterImage, (bowser.x, bowser.y))
     pygame.display.update()
+
+def mario_movement(keys_pressed, mario):
+        if keys_pressed[pygame.K_a]: #left movement key
+            mario.x-= VEL
+        if keys_pressed[pygame.K_d]: #right movement key
+            mario.x+= VEL
+        if keys_pressed[pygame.K_w]: #Up movement key 
+            mario.y-= VEL
+        if keys_pressed[pygame.K_s]: #down movement key 
+            mario.y-= VEL
 
 def main():
     #part of function to make mario move
@@ -34,12 +45,6 @@ def main():
                 run == False
 
         keys_pressed = pygame.key.get_pressed()
-        if keys_pressed[pygame.K_a]: #left movement key
-            mario.x-= VEL
-        if keys_pressed[pygame.K_d]: #right movement key
-            mario.x+= VEL
-  #      if keys_pressed[pygame.K_a]: #Up movement key not working
-            mario.x-= VEL
 
         draw_window
 
