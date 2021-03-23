@@ -6,7 +6,7 @@ pygame.display.set_caption("MarioMiniGame")
 
 WHITE=(255,255,255)
 BLACK= (0,0,0)
-BORDER = pygame.Rect(WIDTH/2 -5, 0, 10, HEIGHT)
+BORDER = pygame.Rect(WIDTH//2 -5, 0, 10, HEIGHT)
 
 FPS = 60
 VEL = 5
