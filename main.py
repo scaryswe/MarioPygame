@@ -12,7 +12,8 @@ FPS = 60
 VEL = 5
 FIREBALL_VEL = 7
 NUM_FIREBALLS = 10
-
+marioHIT = pygame.USEREVENT +1
+bowserHIT = pygame.USEREVENT +2
 
 #Need to get this to load in, then resize, then move, then work on collision
 marioCharacterImage = pygame.image.load(os.path.join('assets', 'maryo.png'))
@@ -52,6 +53,7 @@ def handle_fireballs(mario_fireballs, bowser_fireballs, mario, bowser):
     for fireball in mario_fireballs:
         fireball.x += FIREBALL_VEL
         if mario.colliderect(fireball):
+            mario_fireballs.remove(fireball)
 
 
 def main():
