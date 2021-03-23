@@ -66,6 +66,8 @@ def main():
                     mario_fireballs.append(fireball)
 
                 if event.key = pygame.K_RCTRL:
+                    fireball = pygame.Rect(bowser.x, bowser.y + bowser.height/2 - 2, 10, 5)
+                    bowser_fireballs.append(fireball)
 
         keys_pressed = pygame.key.get_pressed()
         mario_movement(keys_pressed, mario)
