@@ -52,8 +52,14 @@ def bowser_movement(keys_pressed, bowser):
 def handle_fireballs(mario_fireballs, bowser_fireballs, mario, bowser):
     for fireball in mario_fireballs:
         fireball.x += FIREBALL_VEL
-        if mario.colliderect(fireball):
+        if bowser.colliderect(fireball):
+            pygame.event.post(pygame.event.Event(bowserHIT))
             mario_fireballs.remove(fireball)
+    for fireball in bowser_fireballs:
+        fireball.x -= FIREBALL_VEL
+        if mario.colliderect(fireball):
+            pygame.event.post(pygame.event.Event(marioHIT))
+            bowser_fireballs.remove(fireball)
 
 
 def main():
