@@ -25,9 +25,9 @@ def draw_window(mario, bowser):
     pygame.display.update()
 
 def mario_movement(keys_pressed, mario):
-        if keys_pressed[pygame.K_a]: #left movement key
+        if keys_pressed[pygame.K_a] and mario.x - VEL > 0: #left movement key
             mario.x-= VEL
-        if keys_pressed[pygame.K_d]: #right movement key
+        if keys_pressed[pygame.K_d] and mario.x + VEL < 0: #right movement key
             mario.x+= VEL
         if keys_pressed[pygame.K_w]: #Up movement key 
             mario.y-= VEL
