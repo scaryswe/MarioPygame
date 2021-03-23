@@ -11,6 +11,9 @@ BORDER = pygame.Rect(WIDTH/2 -5, 0, 10, HEIGHT)
 FPS = 60
 VEL = 5
 FIREBALL_VEL = 7
+NUM_FIREBALLS = 10
+
+
 #Need to get this to load in, then resize, then move, then work on collision
 marioCharacterImage = pygame.image.load(os.path.join('assets', 'maryo.png'))
 mario = pygame.transform.scale(marioCharacterImage, (55, 45))
@@ -61,11 +64,11 @@ def main():
             if event.type == pygame.QUIT:
                 run == False
             if event.type == pygame.KEYDOWN:
-                if event.key = pygame.K_LCTRL:
+                if event.key = pygame.K_LCTRL and len(mario_fireballs) < NUM_FIREBALLS:
                     fireball = pygame.Rect(mario.x + mario.width, mario.y + mario.height/2 - 2, 10, 5)
                     mario_fireballs.append(fireball)
 
-                if event.key = pygame.K_RCTRL:
+                if event.key = pygame.K_RCTRL and len(bowser_fireballs) < NUM_FIREBALLS:
                     fireball = pygame.Rect(bowser.x, bowser.y + bowser.height/2 - 2, 10, 5)
                     bowser_fireballs.append(fireball)
 
