@@ -78,8 +78,8 @@ def handle_fireballs(mario_fireballs, bowser_fireballs, mario, bowser):
 
 def main():
     #part of function to make them move
-    mario = pygame.Rect(100,300)
-    bowser = pygame.Rect(700, 300)
+    mario = pygame.Rect(100,300,1,1)
+    bowser = pygame.Rect(700, 300,1,1)
 
     mario_fireballs = []
     bowser_fireballs = []
@@ -90,13 +90,13 @@ def main():
         clock.tick(FPS)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                run == False
+                run = False
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LCTRL and len(mario_fireballs) < NUM_FIREBALLS:
+                if event.key == pygame.K_LSHIFT and len(mario_fireballs) < NUM_FIREBALLS:
                     fireball = pygame.Rect(mario.x + mario.width, mario.y + mario.height//2 - 2, 10, 5)
                     mario_fireballs.append(fireball)
 
-                if event.key == pygame.K_RCTRL and len(bowser_fireballs) < NUM_FIREBALLS:
+                if event.key == pygame.K_RSHIFT and len(bowser_fireballs) < NUM_FIREBALLS:
                     fireball = pygame.Rect(bowser.x, bowser.y + bowser.height//2 - 2, 10, 5)
                     bowser_fireballs.append(fireball)
 
