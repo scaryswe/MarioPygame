@@ -75,6 +75,7 @@ def main():
         keys_pressed = pygame.key.get_pressed()
         mario_movement(keys_pressed, mario)
         bowser_movement(keys_pressed, bowser)
+        handle_fireballs(mario_fireballs, bowser_fireballs, mario, bowser)
         draw_window(mario, bowser)
 
     pygame.quit()
