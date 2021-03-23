@@ -47,7 +47,7 @@ def mario_movement(keys_pressed, mario):
         if keys_pressed[pygame.K_w] and mario.y - VEL > 0: #Up movement key 
             mario.y-= VEL
         if keys_pressed[pygame.K_s] and mario.y + VEL + mario.height < HEIGHT: #down movement key 
-            mario.y-= VEL
+            mario.y+= VEL
 
 def bowser_movement(keys_pressed, bowser):
         if keys_pressed[pygame.K_LEFT] and bowser.x - VEL > BORDER.x + BORDER.width: #left movement key
@@ -57,7 +57,7 @@ def bowser_movement(keys_pressed, bowser):
         if keys_pressed[pygame.K_UP] and bowser.y - VEL > 0: #Up movement key 
             bowser.y-= VEL
         if keys_pressed[pygame.K_DOWN] and bowser.y + VEL + bowser.height < HEIGHT: #down movement key 
-            bowser.y-= VEL
+            bowser.y+= VEL
 
 def handle_fireballs(mario_fireballs, bowser_fireballs, mario, bowser):
     for fireball in mario_fireballs:
