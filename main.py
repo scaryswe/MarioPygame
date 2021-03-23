@@ -8,9 +8,13 @@ WHITE=(255,255,255)
 BLACK= (0,0,0)
 
 FPS = 60
+VEL = 5
 #Need to get this to load in, then resize, then move, then work on collision
 marioCharacterImage = pygame.image.load(os.path.join('assets', 'maryo.png'))
 mario = pygame.transform.scale(marioCharacterImage, (55, 45))
+
+bowserCharacterImage= pygame.image.load(os.path.join('assets', 'bowser.png')
+bowser = pygame.transform.scale(bowserCharacterImage, (55, 45))
 
 def draw_window():
     WIN.fill(WHITE)
@@ -28,6 +32,15 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run == False
+
+        keys_pressed = pygame.key.get_pressed()
+        if keys_pressed[pygame.K_a]: #left movement key
+            mario.x-= VEL
+        if keys_pressed[pygame.K_d]: #right movement key
+            mario.x+= VEL
+  #      if keys_pressed[pygame.K_a]: #Up movement key not working
+            mario.x-= VEL
+
         draw_window
 
     pygame.quit()
