@@ -35,9 +35,9 @@ def mario_movement(keys_pressed, mario):
             mario.y-= VEL
 
 def bowser_movement(keys_pressed, bowser):
-        if keys_pressed[pygame.K_LEFT] and bowser.x - VEL > 0: #left movement key
+        if keys_pressed[pygame.K_LEFT] and bowser.x - VEL > BORDER.x + BORDER.width: #left movement key
             bowser.x-= VEL
-        if keys_pressed[pygame.K_RIGHT] and bowser.x + VEL + bowser.width < BORDER.x: #right movement key
+        if keys_pressed[pygame.K_RIGHT] and bowser.x + VEL + bowser.width < WIDTH: #right movement key
             bowser.x+= VEL
         if keys_pressed[pygame.K_UP] and bowser.y - VEL > : #Up movement key 
             bowser.y-= VEL
